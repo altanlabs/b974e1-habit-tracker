@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { Select } from "@/components/ui/select";
+import { Select, SelectTrigger, SelectContent, SelectItem } from "@/components/ui/select";
 import { Progress } from "@/components/ui/progress";
 
 const fadeInUp = {
@@ -79,12 +79,16 @@ export default function IndexPage() {
               <p className="text-muted-foreground mb-4">
                 Log your mood daily to see trends over time.
               </p>
-              <Select className="mb-4">
-                <option>Happy</option>
-                <option>Sad</option>
-                <option>Neutral</option>
-                <option>Excited</option>
-                <option>Stressed</option>
+              <Select>
+                <SelectTrigger className="mb-4">
+                  <SelectContent>
+                    <SelectItem>Happy</SelectItem>
+                    <SelectItem>Sad</SelectItem>
+                    <SelectItem>Neutral</SelectItem>
+                    <SelectItem>Excited</SelectItem>
+                    <SelectItem>Stressed</SelectItem>
+                  </SelectContent>
+                </SelectTrigger>
               </Select>
               <Button className="bg-blue-500 text-white">Log Mood</Button>
             </CardContent>
