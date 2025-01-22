@@ -1,16 +1,19 @@
-import { motion } from "framer-motion"
-import { ArrowRight, Component, Palette, Zap } from "lucide-react"
-import { useNavigate } from "react-router-dom"
+import { motion } from "framer-motion";
+import { ArrowRight, Smile, TrendingUp } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { Select } from "@/components/ui/select";
+import { Progress } from "@/components/ui/progress";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
   transition: { duration: 0.5 }
-}
+};
 
 const staggerContainer = {
   animate: {
@@ -18,10 +21,10 @@ const staggerContainer = {
       staggerChildren: 0.1
     }
   }
-}
+};
 
 export default function IndexPage() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <div className="container mx-auto px-4 py-16 space-y-32">
@@ -33,39 +36,38 @@ export default function IndexPage() {
         transition={{ duration: 0.8 }}
       >
         <Badge variant="secondary" className="mb-4">
-          Welcome to Your New App
+          Welcome to Your Habit Tracker
         </Badge>
         <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
-          Build Beautiful Interfaces
+          Track Your Habits
           <br />
-          With Altan AI
+          Improve Your Life
         </h1>
         <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
-         Start chatting to edit this app.
+          Start tracking your habits and moods to gain insights into your daily life.
         </p>
         <Button size="lg" className="mt-4" onClick={() => navigate('/dashboard')}>
-          View sample dashboard <ArrowRight className="ml-2 h-4 w-4" />
+          View Dashboard <ArrowRight className="ml-2 h-4 w-4" />
         </Button>
       </motion.section>
 
-      {/* Features Section */}
+      {/* Habit Tracking Section */}
       <motion.section
         variants={staggerContainer}
         initial="initial"
         whileInView="animate"
         viewport={{ once: true }}
-        className="grid gap-8 md:grid-cols-3"
+        className="grid gap-8 md:grid-cols-2"
       >
         <motion.div variants={fadeInUp}>
           <Card>
             <CardContent className="pt-6">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-                <Component className="h-6 w-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold">Reusable Components</h3>
-              <p className="text-muted-foreground">
-                Pre-built components that you can easily customize and integrate into your projects.
+              <h3 className="text-xl font-bold">Daily Habits</h3>
+              <p className="text-muted-foreground mb-4">
+                Track your daily habits and maintain streaks.
               </p>
+              <Input placeholder="Add a new habit" className="mb-4" />
+              <Button>Add Habit</Button>
             </CardContent>
           </Card>
         </motion.div>
@@ -73,33 +75,24 @@ export default function IndexPage() {
         <motion.div variants={fadeInUp}>
           <Card>
             <CardContent className="pt-6">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-                <Palette className="h-6 w-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold">Themeable Design</h3>
-              <p className="text-muted-foreground">
-                Easily customize the look and feel with our flexible theming system.
+              <h3 className="text-xl font-bold">Mood Tracking</h3>
+              <p className="text-muted-foreground mb-4">
+                Log your mood daily to see trends over time.
               </p>
-            </CardContent>
-          </Card>
-        </motion.div>
-
-        <motion.div variants={fadeInUp}>
-          <Card>
-            <CardContent className="pt-6">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-                <Zap className="h-6 w-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold">Fast Development</h3>
-              <p className="text-muted-foreground">
-                Speed up your development process with our ready-to-use components.
-              </p>
+              <Select className="mb-4">
+                <option>Happy</option>
+                <option>Sad</option>
+                <option>Neutral</option>
+                <option>Excited</option>
+                <option>Stressed</option>
+              </Select>
+              <Button>Log Mood</Button>
             </CardContent>
           </Card>
         </motion.div>
       </motion.section>
 
-      {/* Components Preview Section */}
+      {/* Progress Insights Section */}
       <motion.section
         initial="initial"
         whileInView="animate"
@@ -108,46 +101,44 @@ export default function IndexPage() {
       >
         <motion.div variants={fadeInUp} className="text-center">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-            Explore Our Components
+            Progress Insights
           </h2>
           <p className="mx-auto mt-4 max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
-            Discover our extensive library of components, designed to help you build better interfaces.
+            Analyze your habit streaks and mood trends over time.
           </p>
         </motion.div>
 
         <motion.div 
           variants={staggerContainer}
-          className="grid gap-4 md:grid-cols-2 lg:grid-cols-3"
+          className="grid gap-4 md:grid-cols-2"
         >
-          {/* Add component previews here */}
-          {/* You can showcase some of your most important components */}
-        </motion.div>
-      </motion.section>
+          <Card>
+            <CardContent className="pt-6">
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+                <TrendingUp className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold">Streaks</h3>
+              <Progress value={75} className="mt-2" />
+              <p className="text-muted-foreground mt-2">
+                You're on a 7-day streak!
+              </p>
+            </CardContent>
+          </Card>
 
-      {/* CTA Section */}
-      <motion.section
-        initial="initial"
-        whileInView="animate"
-        viewport={{ once: true }}
-        className="text-center space-y-6"
-      >
-        <motion.div variants={fadeInUp}>
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
-            Ready to Get Started?
-          </h2>
-          <p className="mx-auto mt-4 max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400">
-            Start building your next project with our modern component library.
-          </p>
-          <div className="mt-6 flex justify-center gap-4">
-            <Button size="lg" variant="default">
-              Some CTA
-            </Button>
-            <Button size="lg" variant="outline">
-              Main CTA
-            </Button>
-          </div>
+          <Card>
+            <CardContent className="pt-6">
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+                <Smile className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold">Mood Trends</h3>
+              <Progress value={60} className="mt-2" />
+              <p className="text-muted-foreground mt-2">
+                Your mood has been mostly positive this week.
+              </p>
+            </CardContent>
+          </Card>
         </motion.div>
       </motion.section>
     </div>
-  )
+  );
 }
